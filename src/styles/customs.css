@@ -1,0 +1,86 @@
+/* Your Custom CSS Here */
+
+.sso-body,
+.sso-landing-body {
+	background-position: center top;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+.sso-body {
+	background-image: url("../public/images/background-sso.svg");
+}
+
+.sso-landing-body {
+	background-image: url("../public/images/background-landingpage.svg");
+}
+
+.sso-register-icon {
+	background-color: rgb(88 172 150 / 15%) !important;
+}
+
+.position-relative {
+	position: relative;
+}
+
+.div-width-auto {
+	width: auto;
+}
+
+.crop-text-1 {
+	-webkit-line-clamp: inherit;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+}
+
+.menu-profil {
+	padding-top: 20px !important;
+	padding-bottom: 20px !important;
+}
+
+.img-object-cover {
+	object-fit: cover !important;
+}
+
+.calendar-card {
+	background-color: #26B4FF;
+	background-image: linear-gradient(to bottom right, #26B4FF, #108EE8);
+}
+
+.hero-bg {
+	background-image: url("/images/background-cover.svg");
+	background-position: bottom center;
+	background-size: cover;
+}
+
+.dropdown-akun {
+	cursor: pointer;
+	padding: 12px;
+}
+
+/* .dropdown-akun:hover>.dropdown-menu {
+	display: block !important;
+	margin: 0px !important;
+	transition: all 0.3s ease;
+} */
+
+.cursor-pointer {
+	cursor: pointer;
+}
+
+.overflow-y-visible {
+	overflow-y: visible;
+}
+
+.cover-img-edit {
+	background-image: url("/images/cover-beranda.png");
+	background-position: bottom center;
+	background-size: cover;
+}
+
+input:disabled, input:disabled + label {
+	cursor: not-allowed !important;
+}
