@@ -57,4 +57,14 @@ Setelah nginx-proxy berjalan maka jalankan container <b>base-nextjs</b> dengan m
 
 3. Tambahkan private IP address PC development dan domain <b>nextjs.local</b> di <b>/etc/hosts</b> atau <b>C:\Windows\System32\etc\hosts</b> (pakai HostsMan).
 
-8. Buka browser dan ketikkan <b>nextjs.local</b>
+4. Buka browser dan ketikkan <b>nextjs.local</b>
+
+Mengkonfigurasikan Sentry pada project NextJS
+
+1. Jalankan command untuk pengkonfigurasian Sentry secara otomatis
+
+	```bash
+	npx @sentry/wizard -i nextjs
+	```
+
+2. Lalu pilih <b>Repository Project</b> yang telah terdaftar pada <b>Bitbucket DPTSI</b> pada terminal
