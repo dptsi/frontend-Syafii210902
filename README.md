@@ -1,18 +1,18 @@
 # README #
 
-Repository aplikasi web NextJS Base
+Repository aplikasi web <b>NextJS Base</b>
 
 ### About ###
 
-Aplikasi web menggunakan framework NextJS yang dapat digunakan sebagai rujukan atau basis pengembangan aplikasi web yang lain. Menggunakan framework NextJS v12.2.5 dengan library [next-auth](https://next-auth.js.org/).
+Aplikasi web menggunakan framework <b>[NextJS](https://nextjs.org/)</b> yang dapat digunakan sebagai rujukan atau basis pengembangan aplikasi web yang lain. Menggunakan framework <b>[NextJS v12.2.5](https://nextjs.org/)</b> dengan library <b>[next-auth](https://next-auth.js.org/)</b>.
 
 ### Usage ###
 
-Langkah-langkah untuk menjalankan aplikasi menggunakan Docker.
+Langkah-langkah untuk menjalankan aplikasi menggunakan <b>Docker</b>.
 
-Jika belum menjalankan nginx reverse proxy maka lakukan langkah-langkah berikut:
+Jika belum menjalankan <b>nginx reverse proxy</b> maka lakukan langkah-langkah berikut:
 
-1. Pull github repository dptsi/nginx-proxy. 
+1. Pull github repository <b>dptsi/nginx-proxy</b>. 
 
 
 	```bash
@@ -29,32 +29,32 @@ Jika belum menjalankan nginx reverse proxy maka lakukan langkah-langkah berikut:
 	git clone https://github.com/dptsi/nginx-proxy.git
 	```
 
-2. Buat docker network dengan nama nginx-proxy-network. 
+2. Buat docker network dengan nama <b>nginx-proxy-network</b>. 
 
 	```bash
 	docker network create --driver bridge nginx-proxy-network
 	```
 
-3. Jalankan docker compose di dalam direktori nginx-proxy. 
+3. Jalankan docker compose di dalam direktori <b>nginx-proxy</b>. 
 
 	```bash
 	docker compose up -d
 	```
 
-Setelah nginx-proxy berjalan maka jalankan container base-nextjs dengan menjalankan langkah-langkah berikut:
+Setelah nginx-proxy berjalan maka jalankan container <b>base-nextjs</b> dengan menjalankan langkah-langkah berikut:
 
-1. Copy file .env.example menjadi .env di root folder
+1. Copy file <b>.env.example</b> menjadi <b>.env</b> di root folder
 
 	```bash
 	cp .env.example .env
 	```
 
-2. Di root folder jalankan perintah berikut. 
+2. Di <b>root folder</b> jalankan perintah berikut. 
 
 	```bash
 	docker compose up -d
 	```
 
-3. Tambahkan private IP address PC development dan domain nextjs.local di /etc/hosts atau C:\Windows\System32\etc\hosts (pakai HostsMan).
+3. Tambahkan private IP address PC development dan domain <b>nextjs.local</b> di <b>/etc/hosts</b> atau <b>C:\Windows\System32\etc\hosts</b> (pakai HostsMan).
 
-8. Buka browser dan ketikkan nextjs.local
+8. Buka browser dan ketikkan <b>nextjs.local</b>
