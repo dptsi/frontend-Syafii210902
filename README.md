@@ -4,7 +4,7 @@ Repository aplikasi web <b>NextJS Base</b>
 
 ### About ###
 
-Aplikasi web menggunakan framework <b>[NextJS](https://nextjs.org/)</b> yang dapat digunakan sebagai rujukan atau basis pengembangan aplikasi web yang lain. Menggunakan framework <b>[NextJS v12.2.5](https://nextjs.org/)</b> dengan library <b>[next-auth](https://next-auth.js.org/)</b>.
+Aplikasi web menggunakan framework <b>[NextJS](https://nextjs.org/)</b> yang dapat digunakan sebagai rujukan atau basis pengembangan aplikasi web yang lain. Menggunakan framework <b>[NextJS v12.2.5](https://nextjs.org/)</b> dengan library <b>[next-auth](https://next-auth.js.org/) dan [@sentry/nextjs](https://www.npmjs.com/package/@sentry/nextjs)</b>.
 
 ### Usage ###
 
