@@ -5,7 +5,7 @@ WORKDIR /var/www/html/
 
 # Copy source code
 COPY src /var/www/html/  
-RUN cp .env.local.example .env
+RUN cp .env.example .env
 
 RUN npm install
 
