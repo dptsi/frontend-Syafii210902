@@ -5,6 +5,8 @@ services:
         image: node:alpine
         volumes:
             - ./src:/var/www/html
+            - /var/www/html/node_modules
+            - /app/.next
         working_dir: /var/www/html
         command: yarn dev
         environment:
