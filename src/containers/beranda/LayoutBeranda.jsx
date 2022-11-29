@@ -2,8 +2,8 @@ import BerandaFooter from "../components/BerandaFooter";
 import ScriptFooter from "../components/ScriptFooter";
 import BerandaMeta from "../components/BerandaMeta";
 import BerandaHeader from "../components/BerandaHeader";
-import BerandaMenuOffcanvas from "../components/BerandaMenuOffcanvas";
-import BerandaMenu from "../components/BerandaMenu";
+import BerandaMenuOffcanvasGeneral from "../components/BerandaMenuOffcanvasGeneral";
+import BerandaMenuGeneral from "../components/BerandaMenuGeneral";
 import Notifikasi from "../components/Notifikasi";
 
 const LayoutBeranda = ({ children }) => {
@@ -12,8 +12,8 @@ const LayoutBeranda = ({ children }) => {
             <BerandaMeta />
             <div className="mn-ht-100v d-flex flex-column" id="content-inner-wrapper">
                 <BerandaHeader />
-                <BerandaMenuOffcanvas />
-                <BerandaMenu />
+                <BerandaMenuOffcanvasGeneral />
+                <BerandaMenuGeneral />
 
                 {children}
 

@@ -15,8 +15,8 @@ const SSOMeta = () => {
 				<link rel="icon" href="/images/favicon.png" />
 
 				<script src="/scripts/jquery/jquery.min.js"></script>
-				<script src="/scripts/jqueryui/jquery-ui.min.js"></script>
-				<script src="/scripts/bootstrap/bootstrap.bundle.min.js"></script>
+				{/* <script src="/scripts/jqueryui/jquery-ui.min.js"></script>
+				<script src="/scripts/bootstrap/bootstrap.bundle.min.js"></script> */}
 			</Head>
 		</>
 	);

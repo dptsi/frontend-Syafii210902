@@ -12,14 +12,17 @@ const TopProgressBar = dynamic(
 	{ ssr: false },
 );
 
-function MyApp({ Component, pageProps: { session, ...pageProps } }) {
+function MyApp({ Component, pageProps: { ...pageProps } }) {
+
 	useEffect(() => {
-		import("bootstrap/dist/js/bootstrap");
-	}, []);
+		require("jquery/dist/jquery")
+		require("jquery-ui/dist/jquery-ui")
+		require("bootstrap/dist/js/bootstrap.bundle")
+	}, [])
 
 	return (
 		<>
-			<SessionProvider session={session}>
+			<SessionProvider refetchInterval={5 * 60} refetchOnWindowFocus={false}>
 				<TopProgressBar />
 				<Component {...pageProps} />
 			</SessionProvider>

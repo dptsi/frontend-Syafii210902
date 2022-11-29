@@ -1,4 +1,4 @@
-const SSOUnauthenticated = () => {
+const SSOUnauthorized = () => {
 	return (
 		<>
 			<div className="content pd-0" style={{ position: "relative" }}>
@@ -20,4 +20,4 @@ const SSOUnauthenticated = () => {
 	);
 };
 
-export default SSOUnauthenticated;
+export default SSOUnauthorized;

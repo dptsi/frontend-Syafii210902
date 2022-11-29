@@ -1,5 +1,5 @@
-import axios from "axios"
 import NextAuth from "next-auth"
+import userInfoSession from "./user-info-session"
 
 export default NextAuth({
     providers: [
@@ -7,13 +7,13 @@ export default NextAuth({
             id: "myits",
             name: "myITS",
             type: "oauth",
-            wellKnown: `${process.env.PROVIDER_DOMAIN}/.well-known/openid-configuration`,
+            wellKnown: process.env.PROVIDER_CONFIGURATION,
             clientId: process.env.CLIENT_ID,
-            clientSecret: process.env.SECRET,
+            clientSecret: process.env.CLIENT_SECRET,
             authorization: {
                 params: {
-                    scope: "openid integra profile email phone group role resource",
-                    redirect_uri: `${process.env.NEXTAUTH_URL}/api/auth/callback/myits`
+                    scope: process.env.SCOPE,
+                    redirect_uri: process.env.REDIRECT_URI
                 }
             },
             idToken: true,
@@ -21,7 +21,6 @@ export default NextAuth({
             profile(profile, account) {
                 return {
                     id: profile.sub,
-                    idToken: account.id_token
                 }
             },
         }
@@ -45,42 +44,50 @@ export default NextAuth({
             return token
         },
         async session({ session, token }) {
-            const userInfo = await axios.get(
-                `${process.env.PROVIDER_DOMAIN}/userinfo`,
-                {
-                    headers: {
-                        'Access-Control-Allow-Origin': '*',
-                        'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT, DELETE',
-                        'Access-Control-Allow-Credentials': true,
-                        'Authorization': `Bearer ${token.accessToken}`,
+            // Get User Info from OIDC Provider
+            let profile = await userInfoSession(token.accessToken, token.user.id)
+            let preference = {}
+
+            // ----- Init Default Role ----- //
+            // If have role from SECMAN
+            if (profile?.role?.length > 0) {
+                // Get default role from SECMAN
+                for (let i = 0; i < profile.role.length; i++) {
+                    if (profile.role[i].is_default == 1) {
+                        preference.active_role = profile.role[i].role_name
+                        break
                     }
                 }
-            )
 
-            token.user.name = userInfo.data.name
-            token.user.nickname = userInfo.data.nickname
-            token.user.email = userInfo.data.email
-            token.user.picture = userInfo.data.picture
-            token.user.gender = userInfo.data.gender
-            token.user.birthdate = userInfo.data.birthdate
-            token.user.preferred_username = userInfo.data.preferred_username
-            token.user.email = userInfo.data.email
-            token.user.email_verivied = userInfo.data.email_verified
-            token.user.alternate_email = userInfo.data.alternate_email
-            token.user.alternate_email_verified = userInfo.data.alternate_email_verified
-            token.user.phone = userInfo.data.phone
-            token.user.phone_verified = userInfo.data.phone_verified
-            token.user.role = userInfo.data.role
+                // If doesn't have default role in SECMAN
+                if (preference.active_role == null) {
+                    preference.active_role = profile.role[0].role_name
+                }
 
-            session.user = token.user
-            session.idToken = token.idToken
-            session.error = token.error
+                profile.role = profile.role.map(({ role_name }) => role_name)
+            }
 
-            return session
+            delete session.user
+            delete session.expires
+
+            if (Object.keys(profile).length > 0) {
+                session.profile = profile
+                session.preference = preference
+
+                return session
+            } else {
+                return {}
+            }
         }
     },
     session: {
+        jwt: true,
         maxAge: 30 * 60,
     },
-    debug: true
+    pages: {
+        signIn: '/auth/sign-in',
+        signOut: '/auth/sign-out',
+        error: '/auth/error',
+    },
+    debug: false
 })

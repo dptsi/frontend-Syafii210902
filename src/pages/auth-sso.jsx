@@ -4,35 +4,65 @@ import LayoutSSO from '../containers/sso/LayoutSSO';
 import LandingSection from '../containers/landing/LandingSection';
 import SSOMeta from "../containers/components/SSOMeta";
 import SSOLoading from "../containers/components/SSOLoading";
-import SSOUnauthenticated from "../containers/components/SSOUnauthenticated";
+import { useRouter } from "next/router";
+import LayoutBeranda from "../containers/beranda/LayoutBeranda";
+import AccessDenied from "../containers/components/AccessDenied";
+import useSWRImmutable from "swr/immutable";
+import SSOUnauthorized from "../containers/components/SSOUnauthorized";
+import ErrorPage from "../containers/components/ErrorPage";
 
 const AuthSSO = ({ children }) => {
 
     const { data: session, status } = useSession()
+    const router = useRouter()
+    const authorized = ["Everyone"]
+
+    const fetcherPreferences = key => session.preference?.[key]
+    const { data: activeRole } = useSWRImmutable('active_role', fetcherPreferences)
+
     if (status === "authenticated") {
-        if (session.user.role.length > 0) {
-            return (
-                <>
-                    {children}
-                </>
-            )
+        if (session.profile?.group?.length > 0 && session.profile?.group?.some(item => authorized.includes(item))) {
+            if (router.pathname.startsWith("/admin") && !(
+                session.preference?.active_role == "Super Administrator"
+            ) && !(
+                activeRole == "Super Administrator"
+            )) {
+                return (
+                    <>
+                        <Head>
+                            <title>Halaman tidak ditemukan • Base Next.JS</title>
+                        </Head>
+                        <LayoutBeranda>
+                            <AccessDenied />
+                        </LayoutBeranda>
+                    </>
+                )
+            } else {
+                return (
+                    <>
+                        {children}
+                    </>
+                )
+            }
         } else {
             return (
                 <>
                     <Head>
-                        <title>NextJS Local</title>
+                        <title>Hak Akses diperlukan • Base Next.JS</title>
                     </Head>
-                    <SSOMeta />
-                    <SSOUnauthenticated />
+                    <ErrorPage backBtn={false}>
+                        <SSOUnauthorized />
+                    </ErrorPage>
                 </>
             )
         }
     } else if (status === "unauthenticated") {
         // signIn("myits")
+
         return (
             <>
                 <Head>
-                    <title>Sign In | NextJS Local</title>
+                    <title>Base Next.JS</title>
                 </Head>
                 <LayoutSSO>
                     <LandingSection />
@@ -44,7 +74,7 @@ const AuthSSO = ({ children }) => {
     return (
         <>
             <Head>
-                <title>NextJS Local</title>
+                <title>Base Next.JS</title>
             </Head>
             <SSOMeta />
             <SSOLoading />
