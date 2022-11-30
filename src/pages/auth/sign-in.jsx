@@ -1,4 +1,4 @@
-import { signIn, useSession } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import BerandaFooter from "../../containers/components/BerandaFooter";
@@ -8,15 +8,6 @@ import SSOMeta from "../../containers/components/SSOMeta";
 
 export default function SignIn() {
     const reqUrl = useRouter()
-    const { data: session, status } = useSession()
-
-    if (status === "authenticated") {
-        reqUrl.push("/")
-    } else if (status === "unauthenticated") {
-        if (!reqUrl.query.error) {
-            signIn("myits")
-        }
-    }
 
     return (
         <>
