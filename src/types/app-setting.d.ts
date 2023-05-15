@@ -7,7 +7,10 @@ interface AppSettingContextType {
     langPref: LanguagePreference,
     themePref: ThemePreference,
     logoMyIts: LogoMyIts,
-    logoAdvHum: LogoAdvHum
+    logoAdvHum: LogoAdvHum,
+    isNavbarOpen: boolean,
+
+    toggleNavbar?: MouseEventHandler<T> | undefined;
 }
 
 export {

@@ -13,7 +13,7 @@ import MainMenu from './MainMenu'
 const Header = () => {
     const { logoMyIts } = useContext(AppSettingContext)
 
-    const { isOpen: isNavbarOpen, onToggle: onNavbarToggle } = useDisclosure()
+    const { isNavbarOpen, toggleNavbar } = useContext(AppSettingContext)
 
     return (
         <>
@@ -26,7 +26,7 @@ const Header = () => {
                         </Link>
                     </Flex>
                     <Flex display={{ lg: "none" }}>
-                        <Button onClick={onNavbarToggle}>
+                        <Button onClick={toggleNavbar}>
                             {
                                 isNavbarOpen ? <IoChevronUp /> : <IoChevronDown />
                             }
@@ -34,7 +34,9 @@ const Header = () => {
                     </Flex>
                 </Flex>
                 <Collapse dir="up" in={isNavbarOpen}>
-                    <MainMenu />
+                    <Box display={{ lg: "none" }} w="full" borderBottom="1px">
+                        <MainMenu />
+                    </Box>
                 </Collapse>
             </Box>
         </>
