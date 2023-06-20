@@ -9,46 +9,62 @@ const menuItem: Array<MenuItem> = [
     },
     {
         name: "Komponen",
-        url: "/",
+        url: "/komponen",
         icon: "apps.svg",
         submenu: [
             {
                 name: "Button",
-                url: "/"
+                url: "/komponen/button"
             },
             {
                 name: "Badge",
-                url: "/"
+                url: "/komponen/badge"
             },
             {
                 name: "Dialog",
-                url: "/"
+                url: "/komponen/dialog"
+            },
+            {
+                name: "Table Basic",
+                url: "/komponen/table-basic"
+            },
+            {
+                name: "Table Advance",
+                url: "/komponen/table-advance"
+            },
+            {
+                name: "Table Scroll",
+                url: "/komponen/table-scroll"
+            },
+            {
+                name: "Form",
+                url: "/komponen/form"
             }
         ]
     },
     {
         name: "Style",
-        url: "/",
-        icon: "paintbrush.svg",
+        url: "/style",
+        icon: "paintbrush.png",
         submenu: [
             {
-                name: "Button",
+                name: "Warna",
                 url: "/"
             },
             {
-                name: "Badge",
+                name: "Tifografi",
                 url: "/"
             },
             {
-                name: "Dialog",
+                name: "Elevasi",
                 url: "/"
             }
         ]
     },
     {
         name: "Pattern",
-        url: "/",
-        icon: "money.svg",
+        url: "/pattern",
+        icon: "pattern.png",
         submenu: [
             {
                 name: "Button",
@@ -66,8 +82,8 @@ const menuItem: Array<MenuItem> = [
     },
     {
         name: "Foundations",
-        url: "/",
-        icon: "globe.svg",
+        url: "/foundations",
+        icon: "foundations.png",
         submenu: [
             {
                 name: "Button",
@@ -85,8 +101,8 @@ const menuItem: Array<MenuItem> = [
     },
     {
         name: "Asset",
-        url: "/",
-        icon: "form.svg",
+        url: "/asset",
+        icon: "assets.png",
         submenu: [
             {
                 name: "Button",
