@@ -63,7 +63,7 @@ const Sidebar = () => {
                 Administrator
               </Text>
               <Text lineHeight="1.2" variant="sidebar-item" fontSize="16px">
-                Sulthon Nashir
+                Syafii
               </Text>
             </Box>
           </Flex>

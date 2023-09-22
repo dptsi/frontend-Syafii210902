@@ -62,7 +62,7 @@ const AccountMenu = () => {
               ml="15px"
             >
               <Text color="#232323">Administrator</Text>
-              <Text color="#232323">Sulthon Nashir</Text>
+              <Text color="#232323">Syafii</Text>
             </Flex>
 
             {/* <motion.div

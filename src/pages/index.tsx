@@ -34,7 +34,7 @@ const Beranda = () => {
                 Hai,
               </Heading>
               <Heading fontSize={48} fontWeight={600}>
-                Sulthon Nashir!
+                Syafii!
               </Heading>
               <Text variant="subtitle" fontSize={22}>
                 Selamat datang di myITS Design System
